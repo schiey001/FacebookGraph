@@ -7,7 +7,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#"><img src="images/FantasyIslandLogo.png" alt="Your Logo"></a>
+                    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Your Logo"></a>
 
                     <div class="nav-collapse collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav">
@@ -15,7 +15,7 @@
                                 <a href="index.php">Home</a>
                             </li>
                             <li class="<?php if($page == 'search'){echo 'active';} ?>">
-                                <a href="islands.php">Search</a>
+                                <a href="search.php">Search</a>
                             </li> 
                         </ul> <!-- end nav -->
 
