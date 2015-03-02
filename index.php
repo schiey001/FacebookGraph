@@ -5,6 +5,8 @@ $page = 'index';
 <html>
     <?php include('includes/includes_top.php'); ?>
     <body>
+       
+        <?php include('includes/header.php'); ?>
 
         <div class='container' id='home_text'>
             <h1>Welkom bij Facebook Graph Search</h1>
