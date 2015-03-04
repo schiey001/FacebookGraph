@@ -25,6 +25,9 @@ footer{
     color: #eee;
     font-size: 11px;
     padding: 10px;
+	width: 100%;
+	bottom : 0px ;
+	position : fixed;
 }
 
 .thumbnails{
@@ -39,6 +42,13 @@ footer{
 #contact{
     margin-top: 100px; 
     margin-bottom: 70px;
+}
+
+#loading{
+	position:fixed;
+	top:40%;
+	left:40%;
+	z-index:1104;
 }
 
 
