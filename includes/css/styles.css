@@ -70,7 +70,21 @@ footer{
 .navbar-brand{
     padding: 13px 15px;
 }
+/* --------------------------------------
+   Facebook
+   -------------------------------------- */
 
+.fbbutton{
+	margin: 14px 10px 10px 10px;
+}
+   
+.fb-like{
+	margin: 15px 0px 0px 20px;	
+}
+
+.fb-status{
+	margin: 15px 0px 0px 20px;
+}
 
 /* --------------------------------------
    Carousel
