@@ -2,7 +2,7 @@
 $page = 'index';
 ?>
 
-<html> 
+<html>
     <?php include('includes/includes_top.php'); ?>
     <body>
        

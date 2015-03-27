@@ -1,16 +1,15 @@
 <?php
-$page = 'search';
+	require_once("includes/facebooksdk/autoload.php");
+	
+	$page = 'search';
 ?>
-
 <html>
     <?php include('includes/includes_top.php'); ?>
     <body>
-        
         <?php include('includes/header.php'); ?>
-        
-        <br>
-        <br>
-        <br>
+        <br />
+        <br />
+        <br />
 		<div class="container">
 			<form action="search.php">
 				<div class="input-group ">
@@ -21,27 +20,23 @@ $page = 'search';
 				</div>
 			</form>
 			<?php
-			if(isset($_GET['search']) && !empty($_GET['search'])) {?>
-			<img id="loading" alt="" src="images/loading.gif"/>
-			<div id="result">
-			</div>
-			<br>
-			<?php
-			}
+				if(isset($_GET["search"]) && !empty($_GET["search"])) {
+					echo "<img id='loading' src='images/loading.gif' alt="" />
+							<div id='result'>
+							</div>
+							<br />";
+				}
 			?>
         </div>
         <?php include('includes/footer.php'); ?>
         <?php include('includes/includes_bot.php'); ?>
-		
     </body>
 	<script type="text/javascript">
-	$(document).ready(function()
-		{
-		$("#result").load("result.php",function() {
-		$("#loading").hide();});
-
-	});
-</script>
-
+		$(document).ready(function() {
+			$("#result").load("result.php",function() {
+				$("#loading").hide();
+			});
+		});
+	</script>
 </html>
 
