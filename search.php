@@ -45,4 +45,3 @@ $page = 'search';
 </script>
 
 </html>
-

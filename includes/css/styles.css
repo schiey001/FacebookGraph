@@ -19,6 +19,8 @@ Updated: December 2014
 #home_text p {font-size: 18px;}
 #home_text h1 {font-size: 32px;}
 
+.facebook-user { cursor: pointer; }
+
 
 footer{
     background: #333;
