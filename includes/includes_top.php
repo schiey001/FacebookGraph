@@ -14,4 +14,3 @@
 	<!-- Include Modernizr in the head, before any other Javascript -->
 	<script src="includes/js/modernizr-2.6.2.min.js"></script>
 </head>
-

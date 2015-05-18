@@ -1,166 +1,22 @@
-/*
-
-My Custom CSS
-=============
-
-Author:  Yorick van Schie
-Updated: December 2014
-
-*/
-
-
-/* --------------------------------------
-   Layout
-   -------------------------------------- */
-/*body{
-    background: url('../../images/BackgroundImage.jpg');
-}*/
-
+.navbar-brand { padding: 13px 15px; }
 #home_text p {font-size: 18px;}
 #home_text h1 {font-size: 32px;}
 
 .facebook-user { cursor: pointer; }
 
+.thumbnails { margin: 20px 0px; border:#DDD; }
 
-footer{
-    background: #333;
-    color: #eee;
-    font-size: 11px;
-    padding: 10px;
-	width: 100%;
-	bottom : 0px ;
-	position : fixed;
-}
+#containerActivities { padding: 10px 0px 10px 0px; }
+#contact { margin-top: 100px; margin-bottom: 70px; }
+#loading { position: fixed; top: 40%; left: 40%; z-index: 1104; }
 
-.thumbnails{
-    margin: 20px 0px;
-    border:#DDD;
-}
+footer { background: #333; color: #eee; font-size: 11px; padding: 10px; width: 100%; bottom: 0px; position : fixed; }
 
-#containerActivities{
-    padding: 10px 0px 10px 0px;
-}
+/* Facebook */
+.fbbutton {	margin: 14px 10px 10px 10px; }
+.fb-like { margin: 15px 0px 0px 20px; }
+.fb-status {	margin: 15px 0px 0px 20px; }
 
-#contact{
-    margin-top: 100px; 
-    margin-bottom: 70px;
-}
-
-#loading{
-	position:fixed;
-	top:40%;
-	left:40%;
-	z-index:1104;
-}
-
-
-/* --------------------------------------
-   Typography
-   -------------------------------------- */
-
-
-
-/* --------------------------------------
-   Navbar
-   -------------------------------------- */
-
-#searchInput{
-    margin-left: 10px;
-    width: 200px;
-}
-
-.navbar-brand{
-    padding: 13px 15px;
-}
-/* --------------------------------------
-   Facebook
-   -------------------------------------- */
-
-.fbbutton{
-	margin: 14px 10px 10px 10px;
-}
-   
-.fb-like{
-	margin: 15px 0px 0px 20px;	
-}
-
-.fb-status{
-	margin: 15px 0px 0px 20px;
-}
-
-/* --------------------------------------
-   Carousel
-   -------------------------------------- */
-#myCarousel {margin-top: 60px;}
-
-#myCarousel {font-size: 24px;}
-
-#myCarousel h4 {font-size: 32px;}
-
-#myCarousel .item{ height: 400px; }
-
-#slide1 {
-    background: url('../../images/FantasyIslandVinkeveensePlassen.jpg'); top center no-repeat;
-}
-#slide2 {
-    background: url('../../images/carousel_medium_02.jpg'); top center no-repeat;
-}
-#slide3 {
-    background: url('../../images/FantasyIslandVaren.jpg'); top center no-repeat;
-}
-
-/* --------------------------------------
-   Global Styles
-   -------------------------------------- */
-
-
-
-/* --------------------------------------
-   Media Queries
-   -------------------------------------- */
-
-/* Portrait & landscape phone */
-@media (max-width: 480px) {
-
-    #home_text p {font-size: 14px;}
-    #home_text h1 {font-size: 22px;}
-
-}
-
-/* Landscape phone to portrait tablet */
-@media (max-width: 768px) {
-
-    #myCarousel .item{ height: 300px; }
-
-    #slide1 {
-        background: url('../../images/FantasyIslandVinkeveensePlassenSmall.jpg'); top center no-repeat;
-    }   
-    #slide2 {
-        background: url('../../images/carousel_small_02.jpg'); top center no-repeat;
-    }
-    #slide3 {
-        background: url('../../images/FantasyIslandVarenSmall.jpg'); top center no-repeat;
-    }
-
-    #myCarousel {font-size: 16px;}
-    #myCarousel h4 {font-size: 24px;}
-
-    #home_text p {font-size: 16px;}
-    #home_text h1 {font-size: 26px;}
-}
-
-/* Large desktop */
-@media (min-width: 1200px) {
-
-    #myCarousel .item{ height: 490px; }
-
-    #slide1 {
-        background: url('../../images/FantasyIslandVinkeveensePlassenLarge.jpg'); top center no-repeat;
-    }    
-    #slide2 {
-        background: url('../../images/carousel_large_02.jpg'); top center no-repeat;
-    }
-    #slide3 {
-        background: url('../../images/FantasyIslandVarenLarge.jpg'); top center no-repeat;
-    }
-}
+/* Media Queries */
+@media (max-width: 480px) { #home_text p { font-size: 14px; } #home_text h1 { font-size: 22px; } }
+@media (max-width: 768px) { #home_text p { font-size: 16px; } #home_text h1 { font-size: 26px; } }
