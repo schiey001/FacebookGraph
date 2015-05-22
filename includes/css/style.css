@@ -9,6 +9,8 @@
 #containerActivities { padding: 10px 0px 10px 0px; }
 #contact { margin-top: 100px; margin-bottom: 70px; }
 #loading { position: fixed; top: 40%; left: 40%; z-index: 1104; }
+.facebook-user img { float: left; margin-right: 15px; }
+.facebook-user .name { font-weight: bold; }
 
 footer { background: #333; color: #eee; font-size: 11px; padding: 10px; width: 100%; bottom: 0px; position : fixed; }
 
