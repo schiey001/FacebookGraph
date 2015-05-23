@@ -8,7 +8,8 @@
     <body>
         <?php include('includes/header.php'); ?>
 		<div class="container">
-			<form id="mainform" action="results/searchforlocationbynameresult.php" method="post">
+			<!-- <form id="mainform" action="results/searchforlocationbynameresult.php" method="post"> -->
+			<form id="mainform" action="api/handlesearch.php" method="post">
 				<div class="input-group">
 					<input type="text" class="form-control" name="q" placeholder="Search for..." value="<?php if(isset($_GET['search'])){echo($_GET['search']);};?>">
 					<span class="input-group-btn">
@@ -35,11 +36,11 @@
 				$.ajax({ 
 					 url   : form.attr('action'),
 					 type  : form.attr('method'),
-					 data  : form.serialize(), // data to be submitted
+					 data  : form.serialize(),
 					 success: function(response){
 						$("#loading").hide();
-						$("#result").append(response); // do what you like with the response
-			
+						$("#result").html(response); 
+						
 						$('.facebook-user').click(function(){
 							// window.open("http://facebook.com/" + $(this).data("facebookid"));
 							window.open("data/profiles/" + $(this).data("facebookid"));

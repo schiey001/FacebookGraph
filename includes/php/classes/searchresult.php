@@ -13,11 +13,11 @@
 			$this->matchingparameters = $matchingparameters;
 		}
 		
-		function getparametersfordisplay(){
+		function get_parameters_for_display(){
 			$p = "";
 			
-			for ($i = 0; $i < count($this->matchingparameters); $i++){
-				$p .= $this->matchingparameters[$i] ."<br />";
+			foreach ($this->matchingparameters as $matchingparameter){
+				$p .= $matchingparameter ."<br />";
 			}
 			
 			return $p;
