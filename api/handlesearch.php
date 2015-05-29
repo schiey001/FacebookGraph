@@ -4,6 +4,7 @@
 	
 	// $searchqueries = array("1" => ':%1$s of :%2$s named :%3$s', "2" => "aiwdjiaw iajwdjiawoij aiojd ioajwd ijawdiojoij");
 	$searchqueries = array("1" => '$s of $s named $s', "2" => '$s named $s');
+	// "3" => 'friends of people named $s', "4" => 'photos of people named $s', "5" => 'groups of people named $s');
 	$searchparameters = array();
 	
 	$q = strtolower($_POST["q"]);
@@ -55,6 +56,10 @@
 			break;
 		case "2":
 			$result = $crawler->search_for_by_name($profiles, $searchparameters);
+			break;
+			
+		default:
+			die("Unsupported search type");
 			break;
 	}
 	
