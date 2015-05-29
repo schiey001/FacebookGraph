@@ -10,7 +10,7 @@ $page = 'search';
         <div class="container">
             <form id="mainform" action="results/searchforlocationbynameresult.php" method="post">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="q" placeholder="Search for..." value="<?php
+                    <input type="text" class="form-control" name="q" id="searchBar" placeholder="Search for..." value="<?php
                     if (isset($_GET['search'])) {
                         echo($_GET['search']);
                     };
@@ -33,7 +33,7 @@ $page = 'search';
             <div class="form-group">
                 <label class="control-label col-1" for="name">Name:</label>
                 <div class="col-5">          
-                    <input type="name" class="form-control" id="name" placeholder="Name ...">
+                    <input type="name" class="form-control" id="name" placeholder="Name ..." onChange="javascript:attachText();">
                     <script>
                         $('.myElements').each(function () {
                             var elem = $(this);
@@ -58,7 +58,7 @@ $page = 'search';
 
                 <label class="control-label col-1" for="location">Location:</label>
                 <div class="col-5">          
-                    <input type="location" class="form-control" id="location" placeholder="Location ...">
+                    <input type="location" class="form-control" id="location" placeholder="Location ..." onChange="javascript:attachText();">
                 </div>
             </div>
 
@@ -67,12 +67,12 @@ $page = 'search';
             <div class="form-group">
                 <label class="control-label col-1" for="birthplace">Birthplace:</label>
                 <div class="col-5">          
-                    <input type="birthplace" class="form-control" id="birthplace" placeholder="Birthplace ...">
+                    <input type="birthplace" class="form-control" id="birthplace" placeholder="Birthplace ..." onChange="javascript:attachText();">
                 </div>
 
                 <label class="control-label col-1" for="birthdate">Birthdate:</label>
                 <div class="col-5">          
-                    <input type="birthdate" class="form-control" id="birthdate" placeholder="Birthdate ...">
+                    <input type="birthdate" class="form-control" id="birthdate" placeholder="Birthdate ..." onChange="javascript:attachText();">
                 </div>
             </div>
 
@@ -81,12 +81,12 @@ $page = 'search';
             <div class="form-group">
                 <label class="control-label col-1" for="study">Study:</label>
                 <div class="col-5">          
-                    <input type="study" class="form-control" id="study" placeholder="Study ...">
+                    <input type="study" class="form-control" id="study" placeholder="Study ..." onChange="javascript:attachText();">
                 </div>
 
                 <label class="control-label col-1" for="work">Work:</label>
                 <div class="col-5">          
-                    <input type="work" class="form-control" id="work" placeholder="Work ...">
+                    <input type="work" class="form-control" id="work" placeholder="Work ..." onChange="javascript:attachText();">
                 </div>
             </div>
 
@@ -122,4 +122,11 @@ $page = 'search';
             });
         });
     </script>
+    
+    <script language="JavaScript" type="text/javascript">
+function attachText()
+{
+  document.getElementById('searchBar').value = (document.getElementById('name').value +" "+ document.getElementById('location').value +" "+ document.getElementById('birthplace').value +" "+ document.getElementById('birthdate').value +" "+ document.getElementById('study').value +" "+ document.getElementById('work').value);
+}
+</script>
 </html>
