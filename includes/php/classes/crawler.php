@@ -3,14 +3,6 @@
 		static $typesofsearch = array("location" => "Lives in", "birthplace" => "From", "birthdate" => "Born on", "education" => "studied");
 		const PROFILEBASEURL = "http://145.92.7.240/~miguel/data/profiles/";
 		
-		function get_friends_of($profiles){
-			$friends = array();
-			
-			foreach ($profiles as $profile){
-				$url = self::PROFILEBASEURL.$profile["id"] ."/friends";
-			}
-		}
-		
 		function search_for_by_name($profiles, $searchparameters){
 			$matchingprofiles = array();
 			
