@@ -30,32 +30,32 @@
 					<h4>Show me the</h4>
 					<div class="checkbox">
 						<label>
-							<input class="search-helper-value" value="location" type="checkbox"> Location
+							<input class="search-helper-value" value="Location" type="checkbox"> Location
 						</label>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input class="search-helper-value" value="birthplace" type="checkbox"> Birthplace
+							<input class="search-helper-value" value="Birthplace" type="checkbox"> Birthplace
 						</label>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input class="search-helper-value" value="birthdate" type="checkbox"> Birthdate
+							<input class="search-helper-value" value="Birthdate" type="checkbox"> Birthdate
 						</label>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input class="search-helper-value" value="education" type="checkbox"> Education
+							<input class="search-helper-value" value="Education" type="checkbox"> Education
 						</label>
 					</div>
 				</div>
 				<div class="second col-sm-4">
 					<h4>Of</h4>
 					<label>
-						<input class="search-helper-value" type="radio" name="of" value="people" checked="checked" /> People
+                                            <input class="search-helper-value" type="radio" name="of" value="people" checked="checked" /> People
 					</label> 
 					<label>
-						<input class="search-helper-value" type="radio" name="of" value="places" disabled="disabled" /> Places
+						<input class="search-helper-value" type="radio" name="of" value="places" /> Places
 					</label>
 				</div>
 				<div class="last col-sm-4">
@@ -118,9 +118,10 @@
 			
 			$(".search-helper-value").change(function(){
 				var text = "";
+                                var of = "of ";
 				$(".search-helper-value:checked").each(function(){
 					if ($(this).is(":radio")){
-						text += "of ";
+						text += of;
 						text += $(this).val() + " ";
 					}
 					else {
