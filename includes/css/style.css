@@ -12,6 +12,14 @@
 .facebook-user img { float: left; margin-right: 15px; }
 .facebook-user .name { font-weight: bold; }
 
+#search-helper { display: none; }
+#search-helper .second { text-align: center; }
+#search-helper .last { text-align: right; }
+#search-helper .last span { margin-right: 21px; }
+#search-helper .last input { float: right !important; }
+#search-helper label { display: inherit; font-weight: normal; }
+#search-helper-toggle { cursor: pointer; float: right; }
+
 footer { background: #333; color: #eee; font-size: 11px; padding: 10px; width: 100%; bottom: 0px; position : fixed; }
 
 /* Facebook */

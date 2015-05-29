@@ -8,18 +8,74 @@
     <body>
         <?php include('includes/header.php'); ?>
 		<div class="container">
-			<!-- <form id="mainform" action="results/searchforlocationbynameresult.php" method="post"> -->
-			<form id="mainform" action="api/handlesearch.php" method="post">
-				<div class="input-group">
-					<input type="text" class="form-control" name="q" placeholder="Search for..." value="<?php if(isset($_GET['search'])){echo($_GET['search']);};?>">
-					<span class="input-group-btn">
-						<button class="submit btn btn-default" type="submit" id="search">Search</button>
-					</span>
+			<div class="row">
+				<form id="mainform" action="api/handlesearch.php" method="post">
+					<div class="input-group">
+						<input id="search-field" type="text" class="form-control" name="q" placeholder="Search for..." value="<?php if(isset($_GET['search'])){echo($_GET['search']);};?>">
+						<span class="input-group-btn">
+							<button class="submit btn btn-default" type="submit" id="search">Search</button>
+						</span>
+					</div>
+				</form>
+				<img id='loading' src='images/loading.gif' alt='' style="display: none;" />
+				<div id='result' class="row">
+					
 				</div>
-			</form>
-			<img id='loading' src='images/loading.gif' alt='' style="display: none;" />
-			<div id='result' class="row">
-				
+			</div>
+			<div class="row">
+				<span id="search-helper-toggle" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+			</div>
+			<div id="search-helper" class="row">
+				<div class="first col-sm-4">
+					<h4>Show me the</h4>
+					<div class="checkbox">
+						<label>
+							<input class="search-helper-value" value="location" type="checkbox"> Location
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input class="search-helper-value" value="birthplace" type="checkbox"> Birthplace
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input class="search-helper-value" value="birthdate" type="checkbox"> Birthdate
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input class="search-helper-value" value="education" type="checkbox"> Education
+						</label>
+					</div>
+				</div>
+				<div class="second col-sm-4">
+					<h4>Of</h4>
+					<label>
+						<input class="search-helper-value" type="radio" name="of" value="people" checked="checked" /> People
+					</label> 
+					<label>
+						<input class="search-helper-value" type="radio" name="of" value="places" disabled="disabled" /> Places
+					</label>
+				</div>
+				<div class="last col-sm-4">
+					<h4>Which</h4>
+					<div class="checkbox">
+						<label>
+							<span>Are named</span><input class="search-helper-value" value="named" type="checkbox">
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<span>Live in</span><input class="search-helper-value" value="who live in" type="checkbox">
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<span>Are aged</span><input class="search-helper-value" value="who are aged" type="checkbox">
+						</label>
+					</div>
+				</div>
 			</div>
         </div>
         <?php include('includes/footer.php'); ?>
@@ -49,6 +105,31 @@
 				});
 				
 				return false;
+			});
+			
+			$("#search-helper-toggle").click(function(){
+				if($("#search-helper").is(":visible")){
+					$("#search-helper").fadeOut();
+				}
+				else {
+					$("#search-helper").fadeIn();
+				}
+			});
+			
+			$(".search-helper-value").change(function(){
+				var text = "";
+				$(".search-helper-value:checked").each(function(){
+					if ($(this).is(":radio")){
+						text += "of ";
+						text += $(this).val() + " ";
+					}
+					else {
+						text += $(this).val() + ", ";
+					}
+				});
+				
+				$("#search-field").val(text);
+				
 			});
 		});
 	</script>
