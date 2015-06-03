@@ -63,6 +63,20 @@
 			
 			return $matchingprofiles;
 		}
+		
+		function get_friends_by_name($profiles){
+			$friends = array();
+			
+			foreach ($profiles as $profile){
+				$url = self::PROFILEBASEURL.$profile["id"] ."/friends";
+				
+				$results = self::search_for_elements_by_class($url, "fsl fwb fcb");
+				
+				foreach ($results as $result){
+					array_push($friends, $result->nodeValue);
+				}
+			}
+		}
 	
 		private function search_for_elements_by_class($url, $class){
 			$dom = new DOMDocument;

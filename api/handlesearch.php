@@ -3,6 +3,7 @@
 	include("../includes/php/classes/searchresult.php");
 	
 	// $searchqueries = array("1" => ':%1$s of :%2$s named :%3$s', "2" => "aiwdjiaw iajwdjiawoij aiojd ioajwd ijawdiojoij");
+	// $searchqueries = array("1" => '$s of $s named $s', "2" => '$s named $s', "3" => 'friends of people named $s');
 	$searchqueries = array("1" => '$s of $s named $s', "2" => '$s named $s');
 	$searchparameters = array();
 	
@@ -55,6 +56,10 @@
 			break;
 		case "2":
 			$result = $crawler->search_for_by_name($profiles, $searchparameters);
+			break;
+		
+		case "3":
+			$result = $crawler->get_friends_by_name($profiles);
 			break;
 	}
 	

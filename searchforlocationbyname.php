@@ -11,7 +11,7 @@ $page = 'search';
             <div class="row">
                 <form id="mainform" action="api/handlesearch.php" method="post">
                     <div class="input-group">
-                        <input id="search-field" type="text" class="form-control" name="q" id="searchBar" placeholder="Search for..." value="<?php
+                        <input id="search-field" type="text" class="form-control" name="q" placeholder="Search for..." value="<?php
                         if (isset($_GET['search'])) {
                             echo($_GET['search']);
                         };
@@ -138,7 +138,8 @@ $page = 'search';
                     }
                     else if($(this).is(":checkbox")) {
                         text += $(this).val() + ", ";
-                    } else {
+                    } 
+					else {
                         text += document.getElementById('name').value;
                     }
                 });
@@ -152,7 +153,7 @@ $page = 'search';
     <script language="JavaScript" type="text/javascript">
         function attachText()
         {
-            document.getElementById('searchBar').value = (document.getElementById('name').value);
+            document.getElementById('search-field').value += (document.getElementById('name').value);
         }
     </script>
 
