@@ -29,74 +29,89 @@ $page = 'search';
         <div class="container" type="searchfields">
 
             <div class="col-12"><br></div>
+            <div class="row">
+                <span id="search-helper-toggle" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+            </div>
+            <div id="search-helper" class="row">
+                <div class="form-group">
+                    <label class="control-label col-1" for="name">Name:</label>
+                    <div class="col-5">          
+                        <input type="name" class="form-control" id="name" placeholder="Name ..." onChange="javascript:attachText();">
+                        <script>
+                            $('.myElements').each(function () {
+                                var elem = $(this);
 
-            <div class="form-group">
-                <label class="control-label col-1" for="name">Name:</label>
-                <div class="col-5">          
-                    <input type="name" class="form-control" id="name" placeholder="Name ..." onChange="javascript:attachText();">
-                    <script>
-                        $('.myElements').each(function () {
-                            var elem = $(this);
+                                // Save current value of element
+                                elem.data('oldVal', elem.val());
 
-                            // Save current value of element
-                            elem.data('oldVal', elem.val());
+                                // Look for changes in the value
+                                elem.bind("propertychange change click keyup input paste", function (event) {
+                                    // If value has changed...
+                                    if (elem.data('oldVal') != elem.val()) {
+                                        // Updated stored value
+                                        elem.data('oldVal', elem.val());
 
-                            // Look for changes in the value
-                            elem.bind("propertychange change click keyup input paste", function (event) {
-                                // If value has changed...
-                                if (elem.data('oldVal') != elem.val()) {
-                                    // Updated stored value
-                                    elem.data('oldVal', elem.val());
 
-                                    
-                                   
-                                }
+
+                                    }
+                                });
                             });
-                        });
-                    </script>
+                        </script>
+                    </div>
+
+                    <label class="control-label col-1" for="location">Location:</label>
+                    <div class="col-5">          
+                        <input type="location" class="form-control" id="location" placeholder="Location ..." onChange="javascript:attachText();">
+                    </div>
                 </div>
 
-                <label class="control-label col-1" for="location">Location:</label>
-                <div class="col-5">          
-                    <input type="location" class="form-control" id="location" placeholder="Location ..." onChange="javascript:attachText();">
+                <div class="col-12"><br></div>
+
+                <div class="form-group">
+                    <label class="control-label col-1" for="birthplace">Birthplace:</label>
+                    <div class="col-5">          
+                        <input type="birthplace" class="form-control" id="birthplace" placeholder="Birthplace ..." onChange="javascript:attachText();">
+                    </div>
+
+                    <label class="control-label col-1" for="birthdate">Birthdate:</label>
+                    <div class="col-5">          
+                        <input type="birthdate" class="form-control" id="birthdate" placeholder="Birthdate ..." onChange="javascript:attachText();">
+                    </div>
                 </div>
+
+                <div class="col-12"><br></div>
+
+                <div class="form-group">
+                    <label class="control-label col-1" for="study">Study:</label>
+                    <div class="col-5">          
+                        <input type="study" class="form-control" id="study" placeholder="Study ..." onChange="javascript:attachText();">
+                    </div>
+
+                    <label class="control-label col-1" for="work">Work:</label>
+                    <div class="col-5">          
+                        <input type="work" class="form-control" id="work" placeholder="Work ..." onChange="javascript:attachText();">
+                    </div>
+                </div>
+
+            </div>
             </div>
 
-            <div class="col-12"><br></div>
-
-            <div class="form-group">
-                <label class="control-label col-1" for="birthplace">Birthplace:</label>
-                <div class="col-5">          
-                    <input type="birthplace" class="form-control" id="birthplace" placeholder="Birthplace ..." onChange="javascript:attachText();">
-                </div>
-
-                <label class="control-label col-1" for="birthdate">Birthdate:</label>
-                <div class="col-5">          
-                    <input type="birthdate" class="form-control" id="birthdate" placeholder="Birthdate ..." onChange="javascript:attachText();">
-                </div>
-            </div>
-
-            <div class="col-12"><br></div>
-
-            <div class="form-group">
-                <label class="control-label col-1" for="study">Study:</label>
-                <div class="col-5">          
-                    <input type="study" class="form-control" id="study" placeholder="Study ..." onChange="javascript:attachText();">
-                </div>
-
-                <label class="control-label col-1" for="work">Work:</label>
-                <div class="col-5">          
-                    <input type="work" class="form-control" id="work" placeholder="Work ..." onChange="javascript:attachText();">
-                </div>
-            </div>
-
-        </div>
-
-        <?php include('includes/footer.php'); ?>
-        <?php include('includes/includes_bottom.php'); ?>
+            <?php include('includes/footer.php'); ?>
+            <?php include('includes/includes_bottom.php'); ?>
     </body>
     <script type="text/javascript">
         $(document).ready(function () {
+            
+            			$("#search-helper-toggle").click(function(){
+				if($("#search-helper").is(":visible")){
+					$("#search-helper").fadeOut();
+				}
+				else {
+					$("#search-helper").fadeIn();
+				}
+			});
+
+            
             $("#mainform").submit(function (e) {
                 e.preventDefault();
                 var form = $(this);
@@ -122,11 +137,11 @@ $page = 'search';
             });
         });
     </script>
-    
+
     <script language="JavaScript" type="text/javascript">
-function attachText()
-{
-  document.getElementById('searchBar').value = (document.getElementById('name').value +" "+ document.getElementById('location').value +" "+ document.getElementById('birthplace').value +" "+ document.getElementById('birthdate').value +" "+ document.getElementById('study').value +" "+ document.getElementById('work').value);
-}
-</script>
+        function attachText()
+        {
+            document.getElementById('searchBar').value = (document.getElementById('name').value + " " + document.getElementById('location').value + " " + document.getElementById('birthplace').value + " " + document.getElementById('birthdate').value + " " + document.getElementById('study').value + " " + document.getElementById('work').value);
+        }
+    </script>
 </html>
