@@ -70,6 +70,24 @@ $page = 'search';
                             <div class="col-sm-10">          
                                 <input type="name" class="form-control" id="name" placeholder="Name ..." onChange="javascript:attachText();">
                             </div>
+                            <script>
+    $('.myElements').each(function () {
+        var elem = $(this);
+
+        // Save current value of element
+        elem.data('oldVal', elem.val());
+
+        // Look for changes in the value
+        elem.bind("propertychange change click keyup input paste", function (event) {
+            // If value has changed...
+            if (elem.data('oldVal') != elem.val()) {
+                // Updated stored value
+                elem.data('oldVal', elem.val());
+            }
+        });
+    });
+                            </script>
+
 
                             <div class="row"><br></div>
                             <div class="row"><br></div>
