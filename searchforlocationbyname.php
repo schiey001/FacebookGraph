@@ -70,25 +70,6 @@ $page = 'search';
                             <div class="col-sm-10">          
                                 <input type="name" class="form-control" id="name" placeholder="Name ..." onChange="javascript:attachText();">
                             </div>
-                            <script>
-    $('.myElements').each(function () {
-        var elem = $(this);
-
-        // Save current value of element
-        elem.data('oldVal', elem.val());
-
-        // Look for changes in the value
-        elem.bind("propertychange change click keyup input paste", function (event) {
-            // If value has changed...
-            if (elem.data('oldVal') != elem.val()) {
-                // Updated stored value
-                elem.data('oldVal', elem.val());
-            }
-        });
-    });
-                            </script>
-
-
                             <div class="row"><br></div>
                             <div class="row"><br></div>
 
@@ -108,24 +89,6 @@ $page = 'search';
                     </div>
                 </div>
             </div>
-            <!--				<div class="last col-sm-4">
-                                                    <h4>Which</h4>
-                                                    <div class="checkbox">
-                                                            <label>
-                                                                    <span>Are named</span><input class="search-helper-value" value="named" type="checkbox">
-                                                            </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                            <label>
-                                                                    <span>Live in</span><input class="search-helper-value" value="who live in" type="checkbox">
-                                                            </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                            <label>
-                                                                    <span>Are aged</span><input class="search-helper-value" value="who are aged" type="checkbox">
-                                                            </label>
-                                                    </div>
-                                            </div>-->
         </div>
         <?php include('includes/footer.php'); ?>
         <?php include('includes/includes_bottom.php'); ?>
@@ -173,8 +136,10 @@ $page = 'search';
                         text += of;
                         text += $(this).val() + " ";
                     }
-                    else {
+                    else if($(this).is(":checkbox")) {
                         text += $(this).val() + ", ";
+                    } else {
+                        text += document.getElementById('name').value;
                     }
                 });
 
