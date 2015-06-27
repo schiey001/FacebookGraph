@@ -2,15 +2,16 @@
 #home_text p {font-size: 18px;}
 #home_text h1 {font-size: 32px;}
 
-.facebook-user { cursor: pointer; }
-
 .thumbnails { margin: 20px 0px; border:#DDD; }
 
 #containerActivities { padding: 10px 0px 10px 0px; }
 #contact { margin-top: 100px; margin-bottom: 70px; }
 #loading { position: fixed; top: 40%; left: 40%; z-index: 1104; }
-.facebook-user img { float: left; margin-right: 15px; }
+
+.facebook-user { max-height: 132px; }
+.facebook-user img { float: left; margin-right: 15px; cursor: pointer; }
 .facebook-user .name { font-weight: bold; }
+.facebook-user .actions { float: right; }
 
 /*#search-helper { display: none; }*/
 #search-helper .second { text-align: center; }

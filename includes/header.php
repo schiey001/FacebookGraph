@@ -14,7 +14,7 @@
 					<a href="index.php">Home</a>
 				</li>
 				<li class="<?php if($page == 'search'){echo 'active';} ?>">
-					<a href="searchforlocationbyname.php">Search</a>
+					<a href="search.php">Search</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav pull-right">

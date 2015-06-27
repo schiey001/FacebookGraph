@@ -1,0 +1,6 @@
+/*!CK:3751256188!*//*1429911261,*/
+
+if (self.CavalryLogger) { CavalryLogger.start_js(["8baJY"]); }
+
+__d("PaymentSettingsLoadingOverlay.react",["React","XUISpinner.react","cx"],function(a,b,c,d,e,f,g,h,i){b.__markCompiled&&b.__markCompiled();var j=g,k=j.PropTypes,l=g.createClass({displayName:"PaymentSettingsLoadingOverlay",propTypes:{visible:k.bool},getDefaultProps:function(){return {visible:false};},render:function(){if(!this.props.visible)return null;return (g.createElement("div",{className:"_1n6g"},g.createElement(h,{size:"large",background:"light",className:"spinner"})));}});e.exports=l;},null);
+__d("PaymentSettingsPrivacyTerm.react",["ImageBlock.react","Link.react","React","cx","fbt"],function(a,b,c,d,e,f,g,h,i,j,k){b.__markCompiled&&b.__markCompiled();var l=i.createClass({displayName:"PaymentSettingsPrivacyTerm",render:function(){return (i.createElement("div",{className:"_5w8e"},i.createElement(g,{className:"_5w8f"},i.createElement("img",{src:"/images/payments/privacy-lock-white-16px.png"}),k._("Your payment information is protected and only you can see it on Facebook. {link}",[k.param("link",i.createElement(h,{href:"https://www.facebook.com/payments_terms/privacy"},k._("See Privacy Terms")))]))));}});e.exports=l;},null);
