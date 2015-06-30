@@ -10,8 +10,13 @@
 
 .facebook-user { max-height: 132px; }
 .facebook-user img { float: left; margin-right: 15px; cursor: pointer; }
+@media (min-width: 768px) { .facebook-user img { display: none; } }
+@media (min-width: 992px) { .facebook-user img { display: block; } }
+.facebook-user p { height: 100px; position: relative; }
+@media (min-width: 768px) { .facebook-user p { margin-left: 0; } }
+@media (min-width: 992px) { .facebook-user p { margin-left: 100px; } }
 .facebook-user .name { font-weight: bold; }
-.facebook-user .actions { float: right; }
+.facebook-user .actions { position: absolute; right: 0; bottom: 0; }
 
 /*#search-helper { display: none; }*/
 #search-helper .second { text-align: center; }

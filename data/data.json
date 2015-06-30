@@ -24,7 +24,8 @@
       "born":"March 6, 1979",
       "university":"The Ohio State University",
       "degree":"Computer Science",
-      "study time":"2002 to 2006"
+      "study time":"2002 to 2006",
+      "friends":[0]
    },
    {  
       "id":2,
@@ -76,7 +77,8 @@
       "born":"December 23, 1989",
       "university":"University of Texas at Austin",
       "degree":"Robotics",
-      "study time":"2001 to 2005"
+      "study time":"2001 to 2005",
+      "friends":[0]
    },
    {  
       "id":6,
@@ -102,7 +104,8 @@
       "born":"August 19, 1989",
       "university":"The Ohio State University",
       "degree":"Astronomy",
-      "study time":"2000 to 2004"
+      "study time":"2000 to 2004",
+      "friends":[0]
    },
    {  
       "id":8,
@@ -141,7 +144,8 @@
       "born":"April 26, 1977",
       "university":"Arizona State University",
       "degree":"Geology",
-      "study time":"2000 to 2004"
+      "study time":"2000 to 2004",
+      "friends":[0]
    },
    {  
       "id":11,

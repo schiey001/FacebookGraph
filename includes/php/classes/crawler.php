@@ -1,7 +1,7 @@
 <?php
 	class Crawler {
 		static $typesofsearch = array("location" => "Lives in", "birthplace" => "From", "birthdate" => "Born on", "education" => "studied");
-		const PROFILEBASEURL = "http://145.92.7.240/~miguel/data/profile/?id=";
+		const PROFILEBASEURL = "http://145.92.7.240/~miguel/data/profile/";
 		
 		function search_for_location_by_name($profiles){
 			return self::search($profiles, array("Lives in"));
@@ -12,7 +12,7 @@
 		}
 		
 		function search_for_education_by_name($profiles){
-			return self::search($profiles, array("studied"));
+			return self::search($profiles, array("Studied"));
 		}
 		
 		function search_for_location_and_birthdate_by_name($profiles){
@@ -24,33 +24,77 @@
 		}
 		
 		function get_friends_by_name($profiles){
+			$matchingprofiles = array();
 			$friends = array();
 			
 			foreach ($profiles as $profile){
-				$url = self::PROFILEBASEURL.$profile["id"] ."/friends";
+				$url = self::PROFILEBASEURL."/friends/?id=". $profile["id"];
+			
+				// Grab the id of the user
+				$results = self::search_for_elements_by_class($url, "_42ft _4jy0 _3-93 _4jy3 _517h _51sy");
+				for ($i = 0; $i < $results->length; $i++){
+					$text = $results->item($i)->getAttribute('ajaxify');
+					$text = str_replace("/ajax/follow/follow_profile.php?profile_id=", "", $text);
+					$id = str_replace("&feed_blacklist_action=show_followee_on_follow&location=1", "", $text);
+					array_push($friends, array("id" => (int)$id));
+					// $friends[$i]["id"] = (int)$id;
+				}
 				
 				$results = self::search_for_elements_by_class($url, "fsl fwb fcb");
+				for ($i = 0; $i < $results->length; $i++){
+					// array_push($friends, array("name" => $result->nodeValue));
+					$friends[$i]["name"] = $results->item($i)->nodeValue;
+				}
 				
-				foreach ($results as $result){
-					array_push($friends, $result->nodeValue);
+				$results = self::search_for_elements_by_class($url, "_s0 _rw img");
+				// First element is the picture of the current user, ignore it
+				for ($i = 0; $i < ($results->length - 1); $i++){
+					// $friends[$i]["pictureurl"] = $results->item($i + 1)->getAttribute('src');
+					$friends[$i]["pictureurl"] = str_replace("../files", "data/profile/files", $results->item($i + 1)->getAttribute('src'));
+				}
+				
+				foreach($friends as $friend){
+					array_push($matchingprofiles, new SearchResult($friend["id"], $friend["name"], $friend["pictureurl"], array()));
 				}
 			}
 			
-			die(print_r($friends));
+			return $matchingprofiles;
 		}
 		
 		function get_friends_by_id($profile){
+			$matchingprofiles = array();
 			$friends = array();
 			
-			$url = self::PROFILEBASEURL.$profile[0]["id"] ."/friends";
+			$url = self::PROFILEBASEURL."/friends/?id=". $profile[0]["id"];
 			
-			$results = self::search_for_elements_by_class($url, "fsl fwb fcb");
-			
-			foreach ($results as $result){
-				array_push($friends, $result->nodeValue);
+			// Grab the id of the user
+			$results = self::search_for_elements_by_class($url, "_42ft _4jy0 _3-93 _4jy3 _517h _51sy");
+			for ($i = 0; $i < $results->length; $i++){
+				$text = $results->item($i)->getAttribute('ajaxify');
+				$text = str_replace("/ajax/follow/follow_profile.php?profile_id=", "", $text);
+				$id = str_replace("&feed_blacklist_action=show_followee_on_follow&location=1", "", $text);
+				array_push($friends, array("id" => (int)$id));
+				// $friends[$i]["id"] = (int)$id;
 			}
 			
-			die(print_r($friends));
+			$results = self::search_for_elements_by_class($url, "fsl fwb fcb");
+			for ($i = 0; $i < $results->length; $i++){
+				// array_push($friends, array("name" => $result->nodeValue));
+				$friends[$i]["name"] = $results->item($i)->nodeValue;
+			}
+			
+			$results = self::search_for_elements_by_class($url, "_s0 _rw img");
+			// First element is the picture of the current user, ignore it
+			for ($i = 0; $i < ($results->length - 1); $i++){
+				// $friends[$i]["pictureurl"] = $results->item($i + 1)->getAttribute('src');
+				$friends[$i]["pictureurl"] = str_replace("../files", "data/profile/files", $results->item($i + 1)->getAttribute('src'));
+			}
+			
+			foreach($friends as $friend){
+				array_push($matchingprofiles, new SearchResult($friend["id"], $friend["name"], $friend["pictureurl"], array()));
+			}
+			
+			return $matchingprofiles;
 		}
 	
 		private function search_for_elements_by_class($url, $class){
@@ -66,7 +110,7 @@
 			$matchingprofiles = array();
 			
 			foreach ($profiles as $profile){
-				$url = self::PROFILEBASEURL.$profile["id"];
+				$url = self::PROFILEBASEURL ."?id=". $profile["id"];
 				
 				// Class commonly used on the info we need
 				$results = self::search_for_elements_by_class($url, "_50f3");
@@ -77,17 +121,29 @@
 				$people = false;
 				
 				foreach ($searchparameters as $searchparameter){
+					//echo $searchparameter ."<br />";
 					foreach ($results as $result){
 						// if (stripos(strtolower($result->nodeValue), $tosearchfor) !== false){
+						// echo $result->nodeValue ."<br />";
 						if (strpos($result->nodeValue, $searchparameter) !== false){
 							// We found the div we want
-							
+							//echo "Yep <br />";
 							//// Filter out $tosearchfor?
 							//$searchparameter->value = $result->nodeValue;
-						
-							// array_push($matchingparameters, $result->nodeValue);
-							array_push($matchingparameters, strstr($result->nodeValue, $searchparameter));
+							
+							// The needed for searches looking for a users education
+							if (strpos($result->nodeValue, "Attended from") !== false){
+								$value = strstr(trim($result->nodeValue), "Attended", true);
+								array_push($matchingparameters, strstr(trim($value), $searchparameter));
+							}
+							else {
+								// array_push($matchingparameters, $result->nodeValue);
+								array_push($matchingparameters, strstr(trim($result->nodeValue), $searchparameter));
+							}
 						}
+						//else {
+							//echo "Nope <br />";
+						//}
 					}
 				}
 				
@@ -95,6 +151,9 @@
 				// This did not work: http://stackoverflow.com/questions/9652575/foreach-loop-with-xpath-on-simplexml-object-returning-duplicate-data
 				$matchingparameters = array_unique($matchingparameters);
 				
+				//var_dump($matchingparameters);
+				//die(print_r($searchparameters));
+				//die(count($matchingparameters) ." : ". count($searchparameters));
 				if (count($matchingparameters) == count($searchparameters)){
 					// This profile matches the search parameters
 					// echo "Found a profile matching the search! <br />";

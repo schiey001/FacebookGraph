@@ -20,6 +20,7 @@
 	
 	$q = strtolower($_POST["q"]);
 	
+	// Find out which search query is being used
 	$lowestlev = array("id" => -1, "lev" => -1);
 	foreach ($searchqueries as $key => $searchquery){
 		$lev = levenshtein($searchquery, $q);
@@ -67,6 +68,7 @@
 	
 	$searchurl = "http://145.92.7.240/~miguel/data/api/search.php?q=". $name;
 	$profiles = json_decode(file_get_contents($searchurl), true);
+	
 	$crawler = new Crawler();
 	
 	$result;
@@ -120,7 +122,7 @@
 									<p>
 										<span class='name'>{$result[$i+$x]->name}</span><br />
 										{$result[$i+$x]->get_parameters_for_display()}<br />
-										<span class='actions'><a href='#'>Photos</a> <a class='friends-search' href='#' data-facebookid='{$result[$i+$x]->id}'>Friends</a> <a href='#'>Profile</a></span>
+										<span class='actions'><a href='#'>Photos</a> <a class='friends-search' href='#' data-facebookid='{$result[$i+$x]->id}'>Friends</a> <a href='data/profile/?id={$result[$i+$x]->id}' target='_blank'>Profile</a></span>
 									</p>
 									<br style='clear: both;' />
 								</div>
