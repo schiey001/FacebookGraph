@@ -114,9 +114,21 @@ $page = 'search';
                             window.open("data/profile/?id=" + $(this).data("facebookid"));
                         });
 						
+						$('.photos-search').click(function(){
+							$("#search-field").val("photos of user with id " + $(this).data("facebookid"));
+							$("#mainform").submit();
+						});
+						
 						$('.friends-search').click(function(){
 							$("#search-field").val("friends of user with id " + $(this).data("facebookid"));
 							$("#mainform").submit();
+						});
+						
+						// Temp fix for photos search returning bugged images
+						$('.photo-result').each(function(){
+							if ($(this).attr('src') == "alt=''/"){
+								$(this).hide();
+							}
 						});
                     }
                 });

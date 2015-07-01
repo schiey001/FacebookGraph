@@ -13,7 +13,8 @@
 		"7" => 'friends of people named $s',
 		"8" => 'people named $s',
 		"9" => 'people named $s living in $s',
-		"10" => 'friends of user with id $s'
+		"10" => 'friends of user with id $s',
+		"11" => 'photos of user with id $s'
 	);
 	
 	$searchparameters = array();
@@ -42,7 +43,8 @@
 	// Clean up empty array values
 	// $searchquery = preg_grep('/^\s*\z/', $searchquery, PREG_GREP_INVERT);
 	
-	if ($lowestlev["id"] != 10){
+	// Search queries that use id instead of name
+	if ($lowestlev["id"] != 10 && $lowestlev["id"] != 11){
 		$searchquery = array_values(array_filter($searchquery));
 	}
 	
@@ -66,7 +68,7 @@
 		}
 	}
 	
-	$searchurl = "http://145.92.7.240/~miguel/data/api/search.php?q=". $name;
+	$searchurl = "http://145.92.7.240/data/api/search.php?q=". $name;
 	$profiles = json_decode(file_get_contents($searchurl), true);
 	
 	$crawler = new Crawler();
@@ -101,36 +103,52 @@
 			$result = $crawler->search_for_person_by_name_and_location($profiles, $filter);
 			break;
 			
+		case "10":
+			$result = $crawler->get_friends_by_id($profiles);
+			break;
+			
+		case "11":
+			$result = $crawler->get_photos_by_id($profiles);
+			break;
+			
 		// Shouldn't happen at all, but just in case
 		default:
 			$result = $crawler->search_for_location_by_name($profiles);
 			break;
-			
-		case "10":
-			$result = $crawler->get_friends_by_id($profiles);
-			break;
 	}
 	
-	$count = count($result);
-	for ($i = 0; $i < $count; $i += 3){
-		for ($x = 0; $x < 3; $x++){
-			if (isset($result[$i+$x])){
-				echo "<div class='col-sm-4'>
-							<div class='panel panel-info facebook-user'>
-								<div class='panel-body'>
-									<img src={$result[$i+$x]->picture->data->url} class='img-rounded picture' style='width: 100px; height: 100px' data-facebookid='{$result[$i+$x]->id}'>
-									<p>
-										<span class='name'>{$result[$i+$x]->name}</span><br />
-										{$result[$i+$x]->get_parameters_for_display()}<br />
-										<span class='actions'><a href='#'>Photos</a> <a class='friends-search' href='#' data-facebookid='{$result[$i+$x]->id}'>Friends</a> <a href='data/profile/?id={$result[$i+$x]->id}' target='_blank'>Profile</a></span>
-									</p>
-									<br style='clear: both;' />
+	// Is the result a list of people or photos?
+	if ($lowestlev["id"] != 11){
+		$count = count($result);
+		for ($i = 0; $i < $count; $i += 3){
+			for ($x = 0; $x < 3; $x++){
+				if (isset($result[$i+$x])){
+					echo "<div class='col-sm-4'>
+								<div class='panel panel-info facebook-user'>
+									<div class='panel-body'>
+										<img src={$result[$i+$x]->picture->data->url} class='img-rounded picture' style='width: 100px; height: 100px' data-facebookid='{$result[$i+$x]->id}'>
+										<p>
+											<span class='name'>{$result[$i+$x]->name}</span><br />
+											{$result[$i+$x]->get_parameters_for_display()}<br />
+											<span class='actions'><a href='#' class='photos-search' data-facebookid='{$result[$i+$x]->id}'>Photos</a> <a class='friends-search' href='#' data-facebookid='{$result[$i+$x]->id}'>Friends</a> <a href='data/profile/?id={$result[$i+$x]->id}' target='_blank'>Profile</a></span>
+										</p>
+										<br style='clear: both;' />
+									</div>
 								</div>
-							</div>
-						</div>";
+							</div>";
+				}
 			}
 		}
-	}	
+	}
+	else {
+		echo "<section id='photos'>";
+		for ($x = 0; $x < count($result); $x++){
+			echo "<a class='fancybox' rel='group' href={$result[$x]}> 
+						<img class='photo-result' src={$result[$x]} alt=''/>
+					</a>";
+		}
+		echo "</section>";
+	}
 	
 	function clean_search_query($query){
 		$q = explode(' ', $query);

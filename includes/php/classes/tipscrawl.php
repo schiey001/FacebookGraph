@@ -1,7 +1,7 @@
 <?php 
 $personNumber = $_POST['person_num'];
 $searchType = $_POST['search_type'];
-const PROFILEBASEURL = "http://145.92.7.240/~jeffrey/data/profiles/";
+const PROFILEBASEURL = "http://145.92.7.240/data/profile/?id=";
 
 
 switch($searchType){

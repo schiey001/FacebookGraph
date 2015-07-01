@@ -1,7 +1,7 @@
 <?php
 	class Crawler {
 		static $typesofsearch = array("location" => "Lives in", "birthplace" => "From", "birthdate" => "Born on", "education" => "studied");
-		const PROFILEBASEURL = "http://145.92.7.240/~miguel/data/profile/";
+		const PROFILEBASEURL = "http://145.92.7.240/data/profile/";
 		
 		function search_for_location_by_name($profiles){
 			return self::search($profiles, array("Lives in"));
@@ -95,6 +95,34 @@
 			}
 			
 			return $matchingprofiles;
+		}
+		
+		function get_photos_by_id($profile){
+			$photos = array();
+			
+			$url = self::PROFILEBASEURL."/photos/?id=". $profile[0]["id"];
+			
+			$results = self::search_for_photos('//i[@style]', $url);
+
+			foreach( $results as $node) {
+				// This fix doesnt work, probably because of the /
+				if (strpos($node->getAttribute("src"), "alt=''/") !== true){
+					$temp = $node->getAttribute('style');	// use substring to filter out the image src
+					$temp = substr($temp, 22, -2);
+					array_push($photos, $temp);
+				}
+			}
+			
+			return $photos;
+		}
+		
+		function search_for_photos($query, $url){
+			$dom = new DOMDocument;
+			$dom->preserveWhiteSpace = false;
+			@$dom->loadHTMLFile($url);
+			$xpath = new DOMXPath($dom);
+			$results = $xpath->query($query);
+			return $results;
 		}
 	
 		private function search_for_elements_by_class($url, $class){

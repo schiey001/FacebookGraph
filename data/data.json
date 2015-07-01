@@ -1510,7 +1510,8 @@
       "born":"February 10, 1975",
       "university":"Florida International University",
       "degree":"Astrophysics",
-      "study time":"2009 to 2013"
+      "study time":"2009 to 2013",
+	  "friends":[116, 117, 118, 119]
    },
    {  
       "id":116,
@@ -1523,7 +1524,8 @@
       "born":"October 20, 1983",
       "university":"Arizona State University",
       "degree":"Agricultural engineering",
-      "study time":"2005 to 2009"
+      "study time":"2005 to 2009",
+	  "friends":[115]
    },
    {  
       "id":117,
@@ -1536,7 +1538,8 @@
       "born":"April 17, 1982",
       "university":"University of Texas at Austin",
       "degree":"Astronomy",
-      "study time":"2010 to 2014"
+      "study time":"2010 to 2014",
+	  "friends":[115]
    },
    {  
       "id":118,
@@ -1549,7 +1552,8 @@
       "born":"August 1, 1973",
       "university":"University of Texas at Austin",
       "degree":"Economics",
-      "study time":"2005 to 2009"
+      "study time":"2005 to 2009",
+	  "friends":[115]
    },
    {  
       "id":119,
@@ -1562,7 +1566,8 @@
       "born":"June 13, 1967",
       "university":"The Ohio State University",
       "degree":"Social Work",
-      "study time":"2008 to 2012"
+      "study time":"2008 to 2012",
+	  "friends":[115]
    },
    {  
       "id":120,

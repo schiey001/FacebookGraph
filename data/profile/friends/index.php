@@ -507,7 +507,7 @@
 																										foreach ($json[$id]['friends'] as $friend){
 																											echo "<li class='fbProfileBrowserListItem'>
 																													  <div class='clearfix _5qo4'>
-																														 <a class='_8o _8t lfloat _ohe' href='http://145.92.7.240/~miguel/data/profile/?id={$friend}' tabindex='-1' aria-hidden='true' data-hovercard='/ajax/hovercard/user.php?id={$friend}&amp;extragetparams=%7B%22hc_location%22%3A%22profile_browser%22%7D'><img class='_s0 _rw img' src='../files/profilePic/{$friend}.jpg' alt=''></a>
+																														 <a class='_8o _8t lfloat _ohe' href='http://145.92.7.240/data/profile/?id={$friend}' tabindex='-1' aria-hidden='true' data-hovercard='/ajax/hovercard/user.php?id={$friend}&amp;extragetparams=%7B%22hc_location%22%3A%22profile_browser%22%7D'><img class='_s0 _rw img' src='../files/profilePic/{$friend}.jpg' alt=''></a>
 																														 <div class='clearfix _42ef'>
 																															<div class='_6a rfloat _ohf'>
 																															   <div class='_6a _6b' style='height:50px'></div>
@@ -519,7 +519,7 @@
 																															   <div class='_6a'>
 																																  <div class='_6a _6b' style='height:50px'></div>
 																																  <div class='_6a _6b'>
-																																	 <div class='fsl fwb fcb'><a href='http://145.92.7.240/~miguel/data/profile/?id={$friend}' data-gt='{&quot;engagement&quot;:{&quot;eng_type&quot;:&quot;1&quot;,&quot;eng_src&quot;:&quot;2&quot;,&quot;eng_tid&quot;:&quot;1235112793&quot;,&quot;eng_data&quot;:[]}}' data-hovercard='/ajax/hovercard/user.php?id={$friend}&amp;extragetparams=%7B%22hc_location%22%3A%22profile_browser%22%7D'>{$json[$friend]['name']}</a></div>
+																																	 <div class='fsl fwb fcb'><a href='http://145.92.7.240/data/profile/?id={$friend}' data-gt='{&quot;engagement&quot;:{&quot;eng_type&quot;:&quot;1&quot;,&quot;eng_src&quot;:&quot;2&quot;,&quot;eng_tid&quot;:&quot;1235112793&quot;,&quot;eng_data&quot;:[]}}' data-hovercard='/ajax/hovercard/user.php?id={$friend}&amp;extragetparams=%7B%22hc_location%22%3A%22profile_browser%22%7D'>{$json[$friend]['name']}</a></div>
 																																  </div>
 																															   </div>
 																															</div>
