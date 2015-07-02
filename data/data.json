@@ -925,7 +925,7 @@
       "born":"March 14, 1989",
       "university":"Texas A&M University",
       "degree":"Computer Science",
-      "study time":"2006 to 2010"
+      "study time":"2006 to 2010",
 	  "friends":[110,89]
    },
    {  
@@ -1173,7 +1173,7 @@
       "born":"May 27, 1962",
       "university":"University of Texas at Austin",
       "degree":"Geology",
-      "study time":"2009 to 2013"
+      "study time":"2009 to 2013",
 	  "friends":[70,110]
    },
    {  
@@ -1187,7 +1187,7 @@
       "born":"September 28, 1987",
       "university":"University of Central Florida",
       "degree":"Computer Science",
-      "study time":"2003 to 2007"
+      "study time":"2003 to 2007",
 	  "friends":[0,1]
    },
    {  
@@ -1253,7 +1253,7 @@
       "born":"August 18, 1979",
       "university":"University of Minnesota",
       "degree":"Agricultural engineering",
-      "study time":"2005 to 2009"
+      "study time":"2005 to 2009",
 	  "friends":[0,105,106]
    },
    {  
@@ -1267,7 +1267,7 @@
       "born":"May 21, 1962",
       "university":"Harvard University",
       "degree":"Geology",
-      "study time":"2001 to 2005"
+      "study time":"2001 to 2005",
 	  "friends":[0,105]
    },
    {  
@@ -1385,7 +1385,7 @@
       "born":"May 28, 1980",
       "university":"University of Minnesota",
       "degree":"Communication research",
-      "study time":"2004 to 2008"
+      "study time":"2004 to 2008",
 	  "friends":[86,95,96,108,110,196]
 	  
    },
@@ -1426,7 +1426,7 @@
       "born":"January 24, 1971",
       "university":"Florida International University",
       "degree":"Economics",
-      "study time":"2004 to 2008"
+      "study time":"2004 to 2008",
 	  "friends":[0,105]
    },
    {  
@@ -1453,7 +1453,7 @@
       "born":"August 3, 1989",
       "university":"Florida International University",
       "degree":"Communication research",
-      "study time":"2002 to 2006"
+      "study time":"2002 to 2006",
 	  "friends":[70,119,89,105]
    },
    {  
@@ -1506,7 +1506,7 @@
       "born":"August 1, 1986",
       "university":"University of Texas at Austin",
       "degree":"Philosophy",
-      "study time":"2005 to 2009"
+      "study time":"2005 to 2009",
 	  "friends":[105]
    },
    {  
@@ -2578,7 +2578,7 @@
       "born":"June 30, 1970",
       "university":"Harvard University",
       "degree":"Philosophy",
-      "study time":"2005 to 2009"
+      "study time":"2005 to 2009",
 	  "friends":[198,105]
    },
    {  
@@ -2592,7 +2592,7 @@
       "born":"March 27, 1970",
       "university":"Texas A&M University",
       "degree":"Computer Science",
-      "study time":"2003 to 2007"
+      "study time":"2003 to 2007",
 	  "friends":[198,199]
    },
    {  
@@ -2606,7 +2606,7 @@
       "born":"February 23, 1980",
       "university":"Harvard University",
       "degree":"Astrophysics",
-      "study time":"2002 to 2006"
+      "study time":"2002 to 2006",
 	  "friends":[199,197,196]
    },
    {  
@@ -2620,7 +2620,7 @@
       "born":"April 19, 1962",
       "university":"Florida International University",
       "degree":"Robotics",
-      "study time":"2006 to 2010"
+      "study time":"2006 to 2010",
 	  "friends":[198,197]
    }
 ]
