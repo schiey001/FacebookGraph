@@ -11,7 +11,7 @@
       "university":"Michigan State University",
       "degree":"Geology",
       "study time":"2002 to 2006",
-      "friends":[1, 5, 7, 10]
+      "friends":[1, 5, 7, 10 ,90,95,96,108]
    },
    {  
       "id":1,
@@ -25,7 +25,7 @@
       "university":"The Ohio State University",
       "degree":"Computer Science",
       "study time":"2002 to 2006",
-      "friends":[0]
+      "friends":[0,90]
    },
    {  
       "id":2,
@@ -926,6 +926,7 @@
       "university":"Texas A&M University",
       "degree":"Computer Science",
       "study time":"2006 to 2010"
+	  "friends":[110,89]
    },
    {  
       "id":71,
@@ -1173,6 +1174,7 @@
       "university":"University of Texas at Austin",
       "degree":"Geology",
       "study time":"2009 to 2013"
+	  "friends":[70,110]
    },
    {  
       "id":90,
@@ -1186,6 +1188,7 @@
       "university":"University of Central Florida",
       "degree":"Computer Science",
       "study time":"2003 to 2007"
+	  "friends":[0,1]
    },
    {  
       "id":91,
@@ -1251,6 +1254,7 @@
       "university":"University of Minnesota",
       "degree":"Agricultural engineering",
       "study time":"2005 to 2009"
+	  "friends":[0,105,106]
    },
    {  
       "id":96,
@@ -1264,6 +1268,7 @@
       "university":"Harvard University",
       "degree":"Geology",
       "study time":"2001 to 2005"
+	  "friends":[0,105]
    },
    {  
       "id":97,
@@ -1381,6 +1386,8 @@
       "university":"University of Minnesota",
       "degree":"Communication research",
       "study time":"2004 to 2008"
+	  "friends":[86,95,96,108,110,196]
+	  
    },
    {  
       "id":106,
@@ -1420,6 +1427,7 @@
       "university":"Florida International University",
       "degree":"Economics",
       "study time":"2004 to 2008"
+	  "friends":[0,105]
    },
    {  
       "id":109,
@@ -1446,6 +1454,7 @@
       "university":"Florida International University",
       "degree":"Communication research",
       "study time":"2002 to 2006"
+	  "friends":[70,119,89,105]
    },
    {  
       "id":111,
@@ -1498,6 +1507,7 @@
       "university":"University of Texas at Austin",
       "degree":"Philosophy",
       "study time":"2005 to 2009"
+	  "friends":[105]
    },
    {  
       "id":115,
@@ -1567,7 +1577,7 @@
       "university":"The Ohio State University",
       "degree":"Social Work",
       "study time":"2008 to 2012",
-	  "friends":[115]
+	  "friends":[115,110]
    },
    {  
       "id":120,
@@ -2569,6 +2579,7 @@
       "university":"Harvard University",
       "degree":"Philosophy",
       "study time":"2005 to 2009"
+	  "friends":[198,105]
    },
    {  
       "id":197,
@@ -2582,6 +2593,7 @@
       "university":"Texas A&M University",
       "degree":"Computer Science",
       "study time":"2003 to 2007"
+	  "friends":[198,199]
    },
    {  
       "id":198,
@@ -2595,6 +2607,7 @@
       "university":"Harvard University",
       "degree":"Astrophysics",
       "study time":"2002 to 2006"
+	  "friends":[199,197,196]
    },
    {  
       "id":199,
@@ -2608,5 +2621,6 @@
       "university":"Florida International University",
       "degree":"Robotics",
       "study time":"2006 to 2010"
+	  "friends":[198,197]
    }
 ]
