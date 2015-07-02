@@ -1,7 +1,7 @@
 <?php
-require_once("includes/facebooksdk/autoload.php");
+	require_once("includes/facebooksdk/autoload.php");
 
-$page = 'search';
+	$page = 'search';
 ?>
 <html>
     <?php include('includes/includes_top.php'); ?>
@@ -26,69 +26,6 @@ $page = 'search';
 
                 </div>
             </div>
-            <!-- <div class="row">
-                <span id="search-helper-toggle" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-            </div>
-            <div class="container">
-                <div id="search-helper" class="row">
-                    <div class="col-sm-3">
-                        <h4>Show me the</h4>
-                        <div class="checkbox">
-                            <label>
-                                <input class="search-helper-value" value="Location" type="checkbox"> Location
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input class="search-helper-value" value="Birthplace" type="checkbox"> Birthplace
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input class="search-helper-value" value="Birthdate" type="checkbox"> Birthdate
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input class="search-helper-value" value="Education" type="checkbox"> Education
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <h4>Of</h4>
-                        <label>
-                            <input class="search-helper-value" type="radio" name="of" value="people" checked="checked" /> People
-                        </label> 
-                        <label>
-                            <input class="search-helper-value" type="radio" name="of" value="places" /> Places
-                        </label>
-                    </div>
-                    <div class="col-sm-6">
-                        <h4>Who/Which</h4>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="name">Are Named:</label>
-                            <div class="col-sm-10">          
-                                <input type="name" class="form-control" id="name" placeholder="Name ..." onChange="javascript:attachText();">
-                            </div>
-                            <div class="row"><br></div>
-                            <div class="row"><br></div>
-
-                            <label class="control-label col-sm-2" for="liveIn">Live In:</label>
-                            <div class="col-sm-10">          
-                                <input type="liveIn" class="form-control" id="liveIn" placeholder="Live In ..." onChange="javascript:attachText();">
-                            </div>
-
-                            <div class="row"><br></div>
-                            <div class="row"><br></div>
-
-                            <label class="control-label col-sm-2" for="aged">Are Aged:</label>
-                            <div class="col-sm-10">          
-                                <input type="aged" class="form-control" id="aged" placeholder="Aged ..." onChange="javascript:attachText();">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <?php include('includes/footer.php'); ?>
         <?php include('includes/includes_bottom.php'); ?>
@@ -135,43 +72,6 @@ $page = 'search';
 
                 return false;
             });
-
-            $("#search-helper-toggle").click(function () {
-                if ($("#search-helper").is(":visible")) {
-                    $("#search-helper").fadeOut();
-                }
-                else {
-                    $("#search-helper").fadeIn();
-                }
-            });
-
-            $(".search-helper-value").change(function () {
-                var text = "";
-                var of = "of ";
-                $(".search-helper-value:checked").each(function () {
-                    if ($(this).is(":radio")) {
-                        text += of;
-                        text += $(this).val() + " ";
-                    }
-                    else if($(this).is(":checkbox")) {
-                        text += $(this).val() + ", ";
-                    } 
-					else {
-                        text += document.getElementById('name').value;
-                    }
-                });
-
-                $("#search-field").val(text);
-
-            });
         });
     </script>
-
-    <script language="JavaScript" type="text/javascript">
-        function attachText()
-        {
-            document.getElementById('search-field').value += (document.getElementById('name').value);
-        }
-    </script>
-
 </html>

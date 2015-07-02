@@ -42,14 +42,12 @@
 	$name;
 	$filter;
 	
-	// Clean up empty array values
-	// $searchquery = preg_grep('/^\s*\z/', $searchquery, PREG_GREP_INVERT);
-	
 	// Search queries that use id instead of name
 	if ($lowestlev["id"] != 10 && $lowestlev["id"] != 11){
 		$searchquery = array_values(array_filter($searchquery));
 	}
 	
+	// Find out the name (or id) and the 'filter', these are slightly different for some search queries
 	if ($lowestlev["id"] == 9){
 		if (count($searchquery) == 2){
 			$name = $searchquery[0];
@@ -64,7 +62,6 @@
 		$name = "";
 	}
 	else {
-		// Add the rest of the lev ids later (and use a switch)
 		if (count($searchquery) == 1){
 			$name = $searchquery[0];
 		}

@@ -1,6 +1,5 @@
 <?php
 	class Crawler {
-		static $typesofsearch = array("location" => "Lives in", "birthplace" => "From", "birthdate" => "Born on", "education" => "studied");
 		const PROFILEBASEURL = "http://145.92.7.240/data/profile/";
 		
 		function search_for_location_by_name($profiles){
@@ -20,7 +19,7 @@
 		}
 		
 		function search_for_person_by_name_and_location($profiles, $location){
-			return self::search($profiles, array("Lives in {$location}", "Born on"));
+			return self::search($profiles, array("Lives in {$location}"));
 		}
 		
 		function get_friends_by_name($profiles){
@@ -42,14 +41,12 @@
 				
 				$results = self::search_for_elements_by_class($url, "fsl fwb fcb");
 				for ($i = 0; $i < $results->length; $i++){
-					// array_push($friends, array("name" => $result->nodeValue));
 					$friends[$i]["name"] = $results->item($i)->nodeValue;
 				}
 				
 				$results = self::search_for_elements_by_class($url, "_s0 _rw img");
 				// First element is the picture of the current user, ignore it
 				for ($i = 0; $i < ($results->length - 1); $i++){
-					// $friends[$i]["pictureurl"] = $results->item($i + 1)->getAttribute('src');
 					$friends[$i]["pictureurl"] = str_replace("../files", "data/profile/files", $results->item($i + 1)->getAttribute('src'));
 				}
 				
@@ -74,19 +71,16 @@
 				$text = str_replace("/ajax/follow/follow_profile.php?profile_id=", "", $text);
 				$id = str_replace("&feed_blacklist_action=show_followee_on_follow&location=1", "", $text);
 				array_push($friends, array("id" => (int)$id));
-				// $friends[$i]["id"] = (int)$id;
 			}
 			
 			$results = self::search_for_elements_by_class($url, "fsl fwb fcb");
 			for ($i = 0; $i < $results->length; $i++){
-				// array_push($friends, array("name" => $result->nodeValue));
 				$friends[$i]["name"] = $results->item($i)->nodeValue;
 			}
 			
 			$results = self::search_for_elements_by_class($url, "_s0 _rw img");
 			// First element is the picture of the current user, ignore it
 			for ($i = 0; $i < ($results->length - 1); $i++){
-				// $friends[$i]["pictureurl"] = $results->item($i + 1)->getAttribute('src');
 				$friends[$i]["pictureurl"] = str_replace("../files", "data/profile/files", $results->item($i + 1)->getAttribute('src'));
 			}
 			
@@ -137,7 +131,7 @@
 			return $photos;
 		}
 		
-		function search_for_photos($query, $url){
+		private function search_for_photos($query, $url){
 			$dom = new DOMDocument;
 			$dom->preserveWhiteSpace = false;
 			@$dom->loadHTMLFile($url);
@@ -152,7 +146,6 @@
 			$xpath = new DOMXPath($dom);
 			
 			return $xpath->query("//*[@class='{$class}']");
-			// return $xpath->query("//div[@class='{$class}']");
 		}
 		
 		private function search($profiles, $searchparameters){
@@ -170,17 +163,11 @@
 				$people = false;
 				
 				foreach ($searchparameters as $searchparameter){
-					//echo $searchparameter ."<br />";
-					foreach ($results as $result){
-						// if (stripos(strtolower($result->nodeValue), $tosearchfor) !== false){
-						// echo $result->nodeValue ."<br />";
+					foreach ($results as $result){;
 						if (strpos($result->nodeValue, $searchparameter) !== false){
 							// We found the div we want
-							//echo "Yep <br />";
-							//// Filter out $tosearchfor?
-							//$searchparameter->value = $result->nodeValue;
 							
-							// The needed for searches looking for a users education
+							// Needed for searches looking for a users education
 							if (strpos($result->nodeValue, "Attended from") !== false){
 								$value = strstr(trim($result->nodeValue), "Attended", true);
 								array_push($matchingparameters, strstr(trim($value), $searchparameter));
@@ -200,13 +187,8 @@
 				// This did not work: http://stackoverflow.com/questions/9652575/foreach-loop-with-xpath-on-simplexml-object-returning-duplicate-data
 				$matchingparameters = array_unique($matchingparameters);
 				
-				//var_dump($matchingparameters);
-				//die(print_r($searchparameters));
-				//die(count($matchingparameters) ." : ". count($searchparameters));
 				if (count($matchingparameters) == count($searchparameters)){
 					// This profile matches the search parameters
-					// echo "Found a profile matching the search! <br />";
-					
 					array_push($matchingprofiles, new SearchResult($profile["id"], $profile["name"], $profile["pictureurl"], $matchingparameters));
 				}
 			}
