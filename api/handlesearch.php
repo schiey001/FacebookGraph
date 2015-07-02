@@ -14,7 +14,9 @@
 		"8" => 'people named $s',
 		"9" => 'people named $s living in $s',
 		"10" => 'friends of user with id $s',
-		"11" => 'photos of user with id $s'
+		"11" => 'photos of user with id $s',
+		"12" => 'photos of people named $s',
+		"13" => 'show friends overview'
 	);
 	
 	$searchparameters = array();
@@ -57,6 +59,9 @@
 			$name = $searchquery[0] .' '. $searchquery[1] ;
 			$filter = $searchquery[2];
 		}
+	}
+	else if ($lowestlev["id"] == 13){
+		$name = "";
 	}
 	else {
 		// Add the rest of the lev ids later (and use a switch)
@@ -111,6 +116,13 @@
 			$result = $crawler->get_photos_by_id($profiles);
 			break;
 			
+		case "12":
+			$result = $crawler->get_photos_by_name($profiles);
+			break;
+		
+		case "13":
+			break;
+			
 		// Shouldn't happen at all, but just in case
 		default:
 			$result = $crawler->search_for_location_by_name($profiles);
@@ -118,7 +130,7 @@
 	}
 	
 	// Is the result a list of people or photos?
-	if ($lowestlev["id"] != 11){
+	if ($lowestlev["id"] != 11 && $lowestlev["id"] != 12 && $lowestlev["id"] != 13){
 		$count = count($result);
 		for ($i = 0; $i < $count; $i += 3){
 			for ($x = 0; $x < 3; $x++){
@@ -139,6 +151,9 @@
 				}
 			}
 		}
+	}
+	else if ($lowestlev["id"] == 13){
+		echo file_get_contents("http://145.92.7.240/api/createfriendsoverview.php");
 	}
 	else {
 		echo "<section id='photos'>";

@@ -97,6 +97,27 @@
 			return $matchingprofiles;
 		}
 		
+		function get_photos_by_name($profiles){
+			$photos = array();
+			
+			foreach ($profiles as $profile){
+				$url = self::PROFILEBASEURL."/photos/?id=". $profile["id"];
+			
+				$results = self::search_for_photos('//i[@style]', $url);
+
+				foreach( $results as $node) {
+					// This fix doesnt work, probably because of the /
+					if (strpos($node->getAttribute("src"), "alt=''/") !== true){
+						$temp = $node->getAttribute('style');	// use substring to filter out the image src
+						$temp = substr($temp, 22, -2);
+						array_push($photos, $temp);
+					}
+				}
+			}
+			
+			return $photos;
+		}
+		
 		function get_photos_by_id($profile){
 			$photos = array();
 			
